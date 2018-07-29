@@ -1,10 +1,10 @@
 const initialState = {
-    articles: []
+    blockData: []
   };
-  const rootReducer = (state = initialState, action) => {
+  const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_ARTICLE':
-          return { ...state, articles: [...state.articles, action.payload] };
+          return { ...state, blockData: [...state.blockData, action.payload] };
         default:
           return state;
       }
