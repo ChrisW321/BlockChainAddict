@@ -19,13 +19,13 @@ class ConnectedApp extends React.Component {
     }
 
     componentDidMount() {
-        setInterval(this.props.updateCash, 500);
+        setInterval(this.props.updateCash, 100);
     }
 
     render() {
         return (
             <div>
-                {this.props.blockData.map(coin => <CoinButton name={coin.name} price={coin.price} rate={coin.rate}/>)}
+                {this.props.blockData.map(coin => <CoinButton name={coin.name} price={coin.price} rate={coin.rate} cash={this.props.cash}/>)}
                 <div>${this.props.cash}</div>
                 <div>+${this.props.rate}</div>
             </div>

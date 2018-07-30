@@ -1,6 +1,6 @@
 const initialState = {
     blockData: [{name:'Bitcoin', price: 7000, rate: 100}, {name:'Ethereum', price: 500, rate: 20}],
-    cash: 0,
+    cash: 15000,
     rate: 10
 };
 
