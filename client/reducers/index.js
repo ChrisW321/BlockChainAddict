@@ -11,6 +11,10 @@ const reducer = (state = initialState, action) => {
                 cash: state.cash + action.cash,
                 rate: state.rate + action.rate
             })
+        case 'UPDATE_CASH':
+            return Object.assign({}, state, {
+                cash: state.cash + state.rate
+            })
         default:
             return state;
         }

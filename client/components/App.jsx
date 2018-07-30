@@ -2,9 +2,15 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import CoinButton from './CoinButton.jsx';
+import { updateCash } from '../actions/index.js';
 
 const mapStateToProps = state => {
-    return { blockData: state.blockData, cash: state.cash };
+    return { blockData: state.blockData, cash: state.cash, rate: state.rate };
+};
+const mapDispatchToProps = dispatch => {
+    return {
+      updateCash: () => dispatch(updateCash())
+    };
 };
 
 class ConnectedApp extends React.Component {
@@ -13,21 +19,20 @@ class ConnectedApp extends React.Component {
     }
 
     componentDidMount() {
-
+        setInterval(this.props.updateCash, 500);
     }
 
     render() {
-        console.log(this.props)
         return (
             <div>
                 {this.props.blockData.map(coin => <CoinButton name={coin.name} price={coin.price} rate={coin.rate}/>)}
-                <div>{this.props.cash}</div>
-                <div>{this.props.rate}</div>
+                <div>${this.props.cash}</div>
+                <div>+${this.props.rate}</div>
             </div>
         )
     }
 }
 
-const App = connect(mapStateToProps)(ConnectedApp);
+const App = connect(mapStateToProps, mapDispatchToProps)(ConnectedApp);
 
 export default App;
