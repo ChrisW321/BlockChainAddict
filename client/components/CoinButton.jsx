@@ -1,9 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { buyCoin } from '../actions/index';
 
-const CoinButton = (props) => {
+const mapDispatchToProps = dispatch => {
+    return {
+      buyCoin: price => dispatch(buyCoin(price))
+    };
+};
+
+const ConnectedCoinButton = (props) => {
     return (
-        <button>{props.coinName}</button>
+        <button onClick={() => props.buyCoin(props)}>{props.name} {props.price}</button>
     )
 }
 
+const CoinButton = connect(null, mapDispatchToProps)(ConnectedCoinButton);
 export default CoinButton;

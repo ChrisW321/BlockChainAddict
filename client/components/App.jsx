@@ -17,10 +17,12 @@ class ConnectedApp extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div>
-                {this.props.blockData.map(coin => <CoinButton coinName={coin.name} />)}
+                {this.props.blockData.map(coin => <CoinButton name={coin.name} price={coin.price} rate={coin.rate}/>)}
                 <div>{this.props.cash}</div>
+                <div>{this.props.rate}</div>
             </div>
         )
     }
