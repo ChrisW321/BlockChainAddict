@@ -1,7 +1,9 @@
+import React from 'react';
 
-
-export const CoinButton = (props) => {
+const CoinButton = (props) => {
     return (
-        <button>{this.props.coinName}</button>
+        <button>{props.coinName}</button>
     )
 }
+
+export default CoinButton;

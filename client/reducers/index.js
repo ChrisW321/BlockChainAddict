@@ -1,5 +1,6 @@
 const initialState = {
-    blockData: ['Bitcoin', 'Ethereum', 'Litecoin', 'Ripple']
+    blockData: [{name:'Bitcoin', price: 7000, rate: 100}, {name:'Ethereum', price: 500, rate: 20}],
+    cash: 0
 };
 
 const reducer = (state = initialState, action) => {

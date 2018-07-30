@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CoinButton from './CoinButton.jsx';
 
 const mapStateToProps = state => {
-    return { blockData: state.blockData };
+    return { blockData: state.blockData, cash: state.cash };
 };
 
 class ConnectedApp extends React.Component {
@@ -19,7 +19,8 @@ class ConnectedApp extends React.Component {
     render() {
         return (
             <div>
-                {this.props.blockData.map(coin => <CoinButton coinName={coin} />)}
+                {this.props.blockData.map(coin => <CoinButton coinName={coin.name} />)}
+                <div>{this.props.cash}</div>
             </div>
         )
     }
