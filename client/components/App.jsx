@@ -1,23 +1,30 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import CoinButton from './CoinButton.jsx';
 
-class App extends React.Component {
+const mapStateToProps = state => {
+    return { blockData: state.blockData };
+};
+
+class ConnectedApp extends React.Component {
     constructor(props) {
         super(props);
     }
 
     componentDidMount() {
-        this.getBlockData()
+
     }
 
-    getBlockData() {
-        axios.get('https://chain.so/api/v2/get_info/DOGE')
-        .then(res => console.log(res.data));
-    }
     render() {
         return (
-            <div>TestRender</div>
+            <div>
+                {this.props.blockData.map(coin => <CoinButton coinName={coin} />)}
+            </div>
         )
     }
 }
+
+const App = connect(mapStateToProps)(ConnectedApp);
+
 export default App;
